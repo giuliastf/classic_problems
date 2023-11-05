@@ -1,0 +1,27 @@
+IMBREA GIULIA-STEFANIA
+321CB
+TEMA 2 PA
+
+2.ferate.cpp
+-pentru aceasta problema am folosit algoritmul lui tarjan luat de pe site ul https://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/
+-problema propriu zisa este rezolvata in findMinEdges si urmareste logica urmatoare:
+    - tarjan contine un vectori de vectori de intregi
+    - practic pe fiecare "linie" se afla un subgraf (nodurile) de tip SCC
+    - nr maxim de muchii ce se pot realiza sunt numarul de subgrafuri SCC-1.
+    - acum, daca 2 SCC-uri comunica intre ele, inseamna ca numarul de muchii scade pentru ca este de ajuns sa legam o muchie spre nodul parinte
+    - pentru a verifica acest lucru, am observat ca trebuie neaparat sa leg o muchie de la nodul meu sursa la SCC daca acel SCC este o famile(nu stiu cum sa definesc :)) ), adica parintii fiecarui nod din SCC apartin SCC ului.
+
+-COMPLEXITATE: TARJAN(O(V+E)) + O(V)
+
+4. magazin.cpp
+- funcția dfs, care primeste un graf (vector<vector<int>> graf), un nod sursa (int src), un vector pentru a stoca ordinea DFS (vector<int>& dfs_nodes) si un vector pentru a stoca numarul de descendenti pentru fiecare nod (vector<int>& descendants). Aceasta efectueazs o parcurgere DFS recursiva pe graf, actualizand ordinea DFS si calculand numarul de descendenti pentru fiecare nod.
+- 1 nu are parinte => fac dfs pe nodul 1
+
+am un vector in plus care inverseaza valoarea cu indexul din vectorul de parcurgere dfs
+pentru fiecare intrebare, daca numarul expedierii este mai mare decat numarul de descendenti, afisez -1
+altfel, iau numarul de ordine din vectorul inversat pentru nodul curent
+si verific daca numarul de ordine + numarul de expedieri este mai mic decat numarul de noduri din graf
+daca este, insemna ca pot face atatea distribuiri si afisez nodul care se afla cu index distribuiri mai in fata de nodul original
+altfel afisez -1 pentru ca nu se poate ajunge la el plecand de la nodul original
+
+-COMPLEXITATE: O(V+E) + O(Q)
